@@ -1,122 +1,192 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import {
+BrowserRouter,
+Routes,
+Route,
+} from "react-router-dom";
+
+// PUBLIC PAGES
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Subscription from "./pages/Subscription";
+
+// USER PAGES
+import Dashboard from "./pages/Dashboard";
+import Scores from "./pages/Scores";
+import Charities from "./pages/Charities";
+import Draws from "./pages/Draws";
+import Ticket from "./pages/Ticket";
+import MyWinnings from "./pages/MyWinnings";
+
+// ADMIN PAGES
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminCharities from "./pages/admin/AdminCharities";
+import AdminDraws from "./pages/admin/AdminDraws";
+import AdminWinners from "./pages/admin/AdminWinners";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminScores from "./pages/admin/AdminScores";
+
+// ROUTE PROTECTION
+import ProtectedRoute from "./routes/ProtectedRoutes";
+import AdminRoute from "./routes/AdminRoutes";
+import SubscriptionGaurd from "./routes/SubscriptionGaurd";
 
 function App() {
-  const [count, setCount] = useState(0)
+return ( <BrowserRouter>
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+  <Routes>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+    {/* PUBLIC ROUTES */}
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    <Route
+      path="/"
+      element={<Home />}
+    />
+
+    <Route
+      path="/login"
+      element={<Login />}
+    />
+
+    <Route
+      path="/register"
+      element={<Register />}
+    />
+
+    <Route
+      path="/subscription"
+      element={<Subscription/>}
+    />
+
+    {/* USER ROUTES */}
+
+    <Route
+      path="/dashboard"
+      element={
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      }
+    />
+
+<Route
+  path="/tickets"
+  element={
+    <ProtectedRoute>
+
+      <SubscriptionGaurd>
+        <Ticket />
+      </SubscriptionGaurd>
+
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/my-winnings"
+  element={
+    <ProtectedRoute>
+
+      <SubscriptionGaurd>
+        <MyWinnings />
+      </SubscriptionGaurd>
+
+    </ProtectedRoute>
+  }
+/>
+
+    <Route
+      path="/scores"
+      element={
+        <ProtectedRoute>
+          <Scores />
+        </ProtectedRoute>
+      }
+    />
+
+    <Route
+      path="/charities"
+      element={
+        <ProtectedRoute>
+          <Charities />
+        </ProtectedRoute>
+      }
+    />
+
+    <Route
+      path="/draws"
+      element={
+        <ProtectedRoute>
+          <Draws />
+        </ProtectedRoute>
+      }
+    />
+
+
+    {/* ADMIN ROUTES */}
+<Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <AdminDashboard />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/users"
+  element={
+    <AdminRoute>
+      <AdminUsers />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/scores"
+  element={
+    <AdminRoute>
+      <AdminScores />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/charities"
+  element={
+    <AdminRoute>
+      <AdminCharities />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/draws"
+  element={
+    <AdminRoute>
+      <AdminDraws />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/winners"
+  element={
+    <AdminRoute>
+      <AdminWinners />
+    </AdminRoute>
+  }
+/>
+
+
+
+  </Routes>
+
+</BrowserRouter>
+
+
+);
 }
 
-export default App
+export default App;
