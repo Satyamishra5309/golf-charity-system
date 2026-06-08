@@ -9,18 +9,21 @@ getWinners,
 
 import {protect} from "../middlware/authMiddleware.js";
 import admin from "../middlware/adminMiddleware.js";
-import upload from "../middlware/uploadMiddleware.js";
+import upload  from "../middlware/uploadMiddleware.js";
+import subscriptionRequired
+from "../middlware/subscriptionMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", protect, admin, getWinners);
+router.get("/", protect, subscriptionRequired, admin, getWinners);
 
 router.put(
-"/upload/:id",
-protect,
-upload.single("proof"),
-uploadProof
+  "/upload-proof/:id",
+  protect,
+  upload.single("image"),
+  uploadProof
 );
+
 
 router.put(
 "/verify/:id",

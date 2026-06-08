@@ -6,7 +6,9 @@ import charityRoutes from "./routes/charityRoutes.js";
 import drawRoutes from "./routes/drawRoutes.js";
 import winnerRoutes from "./routes/winnerRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
-
+import ticketRoutes from "./routes/ticketRoutes.js";
+import subscriptionRoutes from "./routes/subscriptionRoutes.js";
+import publicRoutes from "./routes/publicRoutes.js";
 
 const app = express();
 
@@ -21,6 +23,18 @@ app.use("/api/draws", drawRoutes);
 app.use("/api/winners", winnerRoutes);
 app.use("/uploads", express.static("uploads"));
 app.use("/api/admin", adminRoutes);
+app.use(
+  "/api/tickets",
+  ticketRoutes
+);
+app.use(
+  "/api/subscriptions",
+  subscriptionRoutes
+);
+app.use(
+  "/api/public",
+  publicRoutes
+);
 
 
 

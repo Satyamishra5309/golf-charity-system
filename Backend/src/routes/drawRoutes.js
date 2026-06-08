@@ -2,21 +2,34 @@ import express from "express";
 
 import {
 runDraw,
-getDraws,
 publishDraw,
+getDraws,
 } from "../controllers/drawController.js";
 
-import {protect} from "../middlware/authMiddleware.js";
-import admin from "../middlware/adminMiddleware.js";
+import {
+protect,
+adminOnly,
+} from "../middlware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/run", protect, admin, runDraw);
-router.get("/", protect, getDraws);
+router.get(
+"/",
+protect,
+getDraws
+);
+
+router.post(
+"/run",
+protect,
+adminOnly,
+runDraw
+);
+
 router.put(
 "/publish/:id",
 protect,
-admin,
+adminOnly,
 publishDraw
 );
 

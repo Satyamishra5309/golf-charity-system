@@ -24,11 +24,27 @@ role: {
   default: "user",
 },
 
-subscription: {
+
+subscriptionType: {
   type: String,
-  enum: ["inactive", "monthly", "yearly"],
-  default: "inactive",
+  enum: [
+    "monthly",
+    "yearly",
+    "none",
+  ],
+  default: "none",
 },
+
+subscriptionExpiry: {
+  type: Date,
+},
+
+subscriptionActive: {
+  type: Boolean,
+  default: false,
+},
+
+
 
 charityPercentage: {
   type: Number,

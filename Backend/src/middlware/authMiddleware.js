@@ -32,7 +32,24 @@ if (
 
   req.user = await User.findById(
     decoded.id
-  ).select("-password");
+  ).select("-password")
+  
+  if (
+  req.user.subscriptionExpiry &&
+  new Date() >
+    req.user.subscriptionExpiry
+) {
+
+  req.user.subscriptionActive =
+    false;
+
+  req.user.subscriptionType =
+    "none";
+
+  await req.user.save();
+
+}
+
 
   next();
 

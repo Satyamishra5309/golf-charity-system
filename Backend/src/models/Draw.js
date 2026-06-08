@@ -2,14 +2,45 @@ import mongoose from "mongoose";
 
 const drawSchema = new mongoose.Schema(
 {
-drawNumbers: {
-type: [Number],
+drawMonth: {
+type: String,
 required: true,
 },
 
-drawMonth: {
+
+drawNumbers: [
+  {
+    type: Number,
+  },
+],
+
+drawType: {
   type: String,
-  required: true,
+  enum: [
+    "random",
+    "algorithmic",
+  ],
+  default: "random",
+},
+
+status: {
+  type: String,
+  enum: [
+    "simulation",
+    "draft",
+    "published",
+  ],
+  default: "simulation",
+},
+
+isSimulation: {
+  type: Boolean,
+  default: true,
+},
+
+jackpotRollover: {
+  type: Number,
+  default: 0,
 },
 
 totalPrizePool: {
@@ -17,29 +48,19 @@ totalPrizePool: {
   default: 0,
 },
 
-jackpotCarryForward: {
-  type: Number,
-  default: 0,
-},
-
 winners: [
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-
-    matchedCount: Number,
-
-    prizeAmount: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Winner",
   },
 ],
 
-status: {
-  type: String,
-  enum: ["simulation", "published"],
-  default: "simulation",
+createdBy: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
 },
+
+publishedAt: Date,
 
 
 },
@@ -48,6 +69,9 @@ timestamps: true,
 }
 );
 
-const Draw = mongoose.model("Draw", drawSchema);
+const Draw = mongoose.model(
+"Draw",
+drawSchema
+);
 
 export default Draw;

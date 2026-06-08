@@ -18,52 +18,48 @@ prizeAmount,
 };
 
 // UPLOAD PROOF
-export const uploadProof = async (req, res) => {
+export const uploadProof =
+  async (req, res) => {
 
-try {
+    try {
 
+      const winner =
+        await Winner.findById(
+          req.params.id
+        );
 
-const winner = await Winner.findById(
-  req.params.id
-);
+      if (!winner) {
 
-if (!winner) {
-  return res.status(404).json({
-    message: "Winner not found",
-  });
-}
+        return res.status(404).json({
+          message:
+            "Winner not found",
+        });
 
-// ONLY OWNER CAN UPLOAD
-if (
-  winner.user.toString() !==
-  req.user._id.toString()
-) {
-  return res.status(403).json({
-    message: "Unauthorized",
-  });
-}
+      }
 
-winner.proofImage = req.file.path;
+      winner.proofImage =
+        req.file.path;
 
-await winner.save();
+      await winner.save();
 
-res.status(200).json({
-  message: "Proof uploaded successfully",
-  winner,
-});
+      res.json({
+        message:
+          "Proof uploaded",
+        image:
+          winner.proofImage,
+      });
 
+    } catch (error) {
 
-} catch (error) {
+      res.status(500).json({
+        message:
+          error.message,
+      });
 
+    }
 
-res.status(500).json({
-  message: error.message,
-});
+  };
 
-
-}
-
-};
 
 // VERIFY WINNER
 export const verifyWinner = async (req, res) => {

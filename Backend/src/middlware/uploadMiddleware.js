@@ -1,20 +1,35 @@
+
 import multer from "multer";
 
-const storage = multer.diskStorage({
+import {
+  CloudinaryStorage,
+} from "multer-storage-cloudinary";
 
-destination(req, file, cb) {
-cb(null, "uploads/");
-},
+import cloudinary from "../config/cloudinary.js";
 
-filename(req, file, cb) {
-cb(
-null,
-`${Date.now()}-${file.originalname}`
-);
-},
+const storage =
+  new CloudinaryStorage({
 
-});
+    cloudinary,
 
-const upload = multer({ storage });
+    params: {
+
+      folder:
+        "golf-charity",
+
+      allowed_formats: [
+        "jpg",
+        "png",
+        "jpeg",
+      ],
+
+    },
+
+  });
+
+const upload =
+  multer({
+    storage,
+  });
 
 export default upload;

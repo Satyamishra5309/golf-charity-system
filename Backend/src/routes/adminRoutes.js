@@ -1,7 +1,20 @@
 import express from "express";
 
 import {
-getAdminStats,
+
+getUsers,
+updateUser,
+
+getScores,
+updateScore,
+
+deleteCharity,
+updateCharity,
+
+completePayout,
+
+getAnalytics,
+
 } from "../controllers/adminController.js";
 
 import {
@@ -11,11 +24,65 @@ adminOnly,
 
 const router = express.Router();
 
+// USERS
 router.get(
-"/stats",
+"/users",
 protect,
 adminOnly,
-getAdminStats
+getUsers
+);
+
+router.put(
+"/users/:id",
+protect,
+adminOnly,
+updateUser
+);
+
+// SCORES
+router.get(
+"/scores",
+protect,
+adminOnly,
+getScores
+);
+
+router.put(
+"/scores/:id",
+protect,
+adminOnly,
+updateScore
+);
+
+// CHARITIES
+router.put(
+"/charities/:id",
+protect,
+adminOnly,
+updateCharity
+);
+
+router.delete(
+"/charities/:id",
+protect,
+adminOnly,
+deleteCharity
+);
+
+// WINNERS
+router.put(
+"/winners/:id",
+protect,
+adminOnly,
+completePayout
+);
+
+// ANALYTICS
+router.get(
+"/analytics",
+protect,
+adminOnly,
+getAnalytics
 );
 
 export default router;
