@@ -3,6 +3,9 @@ import cors from "cors";
 import scoreRoutes from "./routes/scoreRoutes.js"
 import authRoutes from "./routes/authRoutes.js";
 import charityRoutes from "./routes/charityRoutes.js";
+import drawRoutes from "./routes/drawRoutes.js";
+import winnerRoutes from "./routes/winnerRoutes.js";
+
 
 const app = express();
 
@@ -13,6 +16,12 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/scores", scoreRoutes);
 app.use("/api/charities", charityRoutes);
+app.use("/api/draws", drawRoutes);
+app.use("/api/winners", winnerRoutes);
+app.use("/uploads", express.static("uploads"));
+
+
+
 
 app.get("/", (req, res) => {
 res.send("API Running...");
