@@ -6,7 +6,7 @@ getCharities,
 selectCharity,
 } from "../controllers/charityController.js";
 
-import protect from "../middlware/authMiddleware.js";
+import {protect} from "../middlware/authMiddleware.js";
 import admin from "../middlware/adminMiddleware.js";
 
 const router = express.Router();

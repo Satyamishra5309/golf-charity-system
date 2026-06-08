@@ -7,7 +7,7 @@ markAsPaid,
 getWinners,
 } from "../controllers/winnerController.js";
 
-import protect from "../middlware/authMiddleware.js";
+import {protect} from "../middlware/authMiddleware.js";
 import admin from "../middlware/adminMiddleware.js";
 import upload from "../middlware/uploadMiddleware.js";
 

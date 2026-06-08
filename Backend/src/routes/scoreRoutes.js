@@ -5,7 +5,7 @@ addScore,
 getUserScores,
 } from "../controllers/scoreController.js";
 
-import protect from "../middlware/authMiddleware.js";
+import {protect} from "../middlware/authMiddleware.js";
 
 const router = express.Router();
 
