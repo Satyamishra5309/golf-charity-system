@@ -41,7 +41,7 @@ setUser(userData);
 
 const logout = () => {
 
-localStorage.removeItem("userInfo");
+localStorage.removeItem("user");
 
 setUser(null);
 
