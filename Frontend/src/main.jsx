@@ -13,9 +13,12 @@ document.getElementById("root")
 <React.StrictMode>
 
 
-<AuthProvider>
-  <App />
-</AuthProvider>
+ <BrowserRouter>
 
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+
+  </BrowserRouter>
 </React.StrictMode>
 );

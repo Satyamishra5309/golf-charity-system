@@ -32,8 +32,7 @@ import AdminRoute from "./routes/AdminRoutes";
 import SubscriptionGaurd from "./routes/SubscriptionGaurd";
 
 function App() {
-return ( <BrowserRouter>
-
+return ( 
 
   <Routes>
 
@@ -156,7 +155,7 @@ return ( <BrowserRouter>
 
   </Routes>
 
-</BrowserRouter>
+
 
 
 );
