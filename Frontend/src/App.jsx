@@ -19,12 +19,12 @@ import Ticket from "./pages/Ticket";
 import MyWinnings from "./pages/MyWinnings";
 
 // ADMIN PAGES
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminCharities from "./pages/admin/AdminCharities";
-import AdminDraws from "./pages/admin/AdminDraws";
-import AdminWinners from "./pages/admin/AdminWinners";
-import AdminUsers from "./pages/admin/AdminUsers";
-import AdminScores from "./pages/admin/AdminScores";
+// import AdminDashboard from "./pages/admin/AdminDashboard";
+// import AdminCharities from "./pages/admin/AdminCharities";
+// import AdminDraws from "./pages/admin/AdminDraws";
+// import AdminWinners from "./pages/admin/AdminWinners";
+// import AdminUsers from "./pages/admin/AdminUsers";
+// import AdminScores from "./pages/admin/AdminScores";
 
 // ROUTE PROTECTION
 import ProtectedRoute from "./routes/ProtectedRoutes";
@@ -124,60 +124,6 @@ return ( <BrowserRouter>
     />
 
 
-    {/* ADMIN ROUTES */}
-<Route
-  path="/admin"
-  element={
-    <AdminRoute>
-      <AdminDashboard />
-    </AdminRoute>
-  }
-/>
-
-<Route
-  path="/admin/users"
-  element={
-    <AdminRoute>
-      <AdminUsers />
-    </AdminRoute>
-  }
-/>
-
-<Route
-  path="/admin/scores"
-  element={
-    <AdminRoute>
-      <AdminScores />
-    </AdminRoute>
-  }
-/>
-
-<Route
-  path="/admin/charities"
-  element={
-    <AdminRoute>
-      <AdminCharities />
-    </AdminRoute>
-  }
-/>
-
-<Route
-  path="/admin/draws"
-  element={
-    <AdminRoute>
-      <AdminDraws />
-    </AdminRoute>
-  }
-/>
-
-<Route
-  path="/admin/winners"
-  element={
-    <AdminRoute>
-      <AdminWinners />
-    </AdminRoute>
-  }
-/>
 
 
 

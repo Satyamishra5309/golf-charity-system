@@ -172,7 +172,7 @@ const Home = () => {
                 <h2 className="text-5xl font-bold text-emerald-400">
 
                   ₹
-                  {stats.totalPrizePool.toLocaleString()}
+                  {(stats?.totalPrizePool || 0).toLocaleString()}
 
                 </h2>
 
