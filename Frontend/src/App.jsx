@@ -22,7 +22,7 @@ import MyWinnings from "./pages/MyWinnings";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminCharities from "./pages/admin/AdminCharities";
 import AdminDraws from "./pages/admin/AdminDraws";
-import AdminWinners from "./pages/admin/AdminWinners";
+import AdminWinners from "./pages/admin/AdminWInners";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminScores from "./pages/admin/AdminScores";
 
