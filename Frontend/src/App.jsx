@@ -18,13 +18,13 @@ import Draws from "./pages/Draws";
 import Ticket from "./pages/Ticket";
 import MyWinnings from "./pages/MyWinnings";
 
-// ADMIN PAGES
-// import AdminDashboard from "./pages/admin/AdminDashboard";
-// import AdminCharities from "./pages/admin/AdminCharities";
-// import AdminDraws from "./pages/admin/AdminDraws";
-// import AdminWinners from "./pages/admin/AdminWinners";
-// import AdminUsers from "./pages/admin/AdminUsers";
-// import AdminScores from "./pages/admin/AdminScores";
+/* ADMIN IMPORTS */
+import AdminDashboard from "./admin/AdminDashboard";
+import AdminCharities from "./admin/AdminCharities";
+import AdminDraws from "./admin/AdminDraws";
+import AdminUsers from "./admin/AdminUsers";
+import AdminWinners from "./admin/AdminWinners";
+import AdminScores from "./admin/AdminScores";
 
 // ROUTE PROTECTION
 import ProtectedRoute from "./routes/ProtectedRoutes";
@@ -123,9 +123,36 @@ return ( <BrowserRouter>
       }
     />
 
+            {/* ADMIN ROUTES */}
+        <Route
+          path="/admin"
+          element={<AdminDashboard />}
+        />
 
+        <Route
+          path="/admin/charities"
+          element={<AdminCharities />}
+        />
 
+        <Route
+          path="/admin/draws"
+          element={<AdminDraws />}
+        />
 
+        <Route
+          path="/admin/users"
+          element={<AdminUsers />}
+        />
+
+        <Route
+          path="/admin/winners"
+          element={<AdminWinners />}
+        />
+
+        <Route
+          path="/admin/scores"
+          element={<AdminScores />}
+        />
 
   </Routes>
 
