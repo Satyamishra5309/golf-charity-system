@@ -46,7 +46,6 @@ try {
   );
 
   login(data);
-
  if (data.role === "admin") {
 
 navigate("/admin");

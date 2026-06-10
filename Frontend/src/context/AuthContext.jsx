@@ -43,7 +43,7 @@ setUser(userData);
 
 const logout = () => {
 
-  localStorage.removeItem("user");
+  localStorage.removeItem("userInfo");
 
   setUser(null);
 
@@ -55,6 +55,7 @@ return (
 <AuthContext.Provider
 value={{
 user,
+setUser,
 login,
 logout,
 }}
