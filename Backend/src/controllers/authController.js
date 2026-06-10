@@ -66,13 +66,25 @@ if (!isMatch) {
   });
 }
 
-res.status(200).json({
-  _id: user._id,
-  name: user.name,
-  email: user.email,
-  role: user.role,
-  subscription: user.subscription,
+res.json({
   token: generateToken(user._id),
+
+  _id: user._id,
+
+  name: user.name,
+
+  email: user.email,
+
+  role: user.role,
+
+  subscriptionActive:
+    user.subscriptionActive,
+
+  subscriptionType:
+    user.subscriptionType,
+
+  subscriptionExpiry:
+    user.subscriptionExpiry,
 });
 
 } catch (error) {

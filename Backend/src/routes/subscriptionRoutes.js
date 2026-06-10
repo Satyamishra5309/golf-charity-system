@@ -1,7 +1,10 @@
+// routes/subscriptionRoutes.js
 
 import express from "express";
 
-import {protect} from "../middlware/authMiddleware.js";
+import {
+  protect,
+} from "../middlware/authMiddleware.js";
 
 import {
   buySubscription,

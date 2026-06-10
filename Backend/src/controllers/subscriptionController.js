@@ -7,9 +7,8 @@ export const buySubscription =
 
     try {
 
-      const {
-        type,
-      } = req.body;
+      const { type } =
+        req.body;
 
       const user =
         await User.findById(
@@ -49,6 +48,7 @@ export const buySubscription =
       await user.save();
 
       res.json({
+        success: true,
         message:
           "Subscription activated",
         user,
@@ -64,7 +64,6 @@ export const buySubscription =
     }
 
   };
-
 
 // CANCEL PLAN
 export const cancelSubscription =
@@ -86,8 +85,10 @@ export const cancelSubscription =
       await user.save();
 
       res.json({
+        success: true,
         message:
           "Subscription cancelled",
+        user,
       });
 
     } catch (error) {
